@@ -331,7 +331,7 @@ function setup_evochat() {
   rvm install "ruby-3.1.3"
   rvm use 3.1.3 --default
 
-  git clone https://github.com/evochat/evochat.git
+  git clone https://github.com/GilsonGlass/evochat.git
   cd evochat
   git checkout "$BRANCH"
   bundle
