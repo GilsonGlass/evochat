@@ -1,0 +1,6 @@
+# give evochat user permission to start/stop/restart evochat systemd service
+
+%evochat ALL=NOPASSWD: /bin/systemctl start evochat.target
+%evochat ALL=NOPASSWD: /bin/systemctl stop evochat.target
+%evochat ALL=NOPASSWD: /bin/systemctl restart evochat.target
+%evochat ALL=NOPASSWD: /usr/local/bin/cwctl
