@@ -2576,7 +2576,7 @@
         ],
         "operationId": "newConversation",
         "summary": "Create New Conversation",
-        "description": "Creating a conversation in evochat requires a source id. \n\n Learn more about source_id: https://github.com/evochat/evochat/wiki/Building-on-Top-of-evochat:-Importing-Existing-Contacts-and-Creating-Conversations",
+        "description": "Creating a conversation in evochat requires a source id. \n\n Learn more about source_id: https://github.com/GilsonGlass/evochat/wiki/Building-on-Top-of-evochat:-Importing-Existing-Contacts-and-Creating-Conversations",
         "security": [
           {
             "userApiKey": [
