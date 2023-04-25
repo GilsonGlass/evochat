@@ -1391,6 +1391,7 @@
     is-url "^1.2.4"
     nanoid "^2.1.11"
 
+
 "@evochat/prosemirror-schema@https://github.com/GilsonGlass/prosemirror-schema.git":
   version "1.0.0"
   resolved "https://github.com/GilsonGlass/prosemirror-schema.git#3306cdb220797090ce41ea607174e940330177e1"
