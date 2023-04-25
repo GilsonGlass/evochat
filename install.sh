@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Description: Install and manage a Evochat installation.
+# Description: Install and manage a evochat installation.
 # OS: Ubuntu 20.04 LTS
 # Script Version: 2.2.0
 # Run this script as root
@@ -145,12 +145,12 @@ function exit_handler() {
 #   None
 ##############################################################################
 function get_domain_info() {
-  read -rp 'Enter the domain/subdomain for Evochat (e.g., evochat.domain.com): ' domain_name
+  read -rp 'Enter the domain/subdomain for evochat (e.g., evochat.domain.com): ' domain_name
   read -rp 'Enter an email address for LetsEncrypt to send reminders when your SSL certificate is up for renewal: ' le_email
   cat << EOF
 
 This script will generate SSL certificates via LetsEncrypt and
-serve Evochat at https://$domain_name.
+serve evochat at https://$domain_name.
 Proceed further once you have pointed your DNS to the IP of the instance.
 
 EOF
@@ -311,7 +311,7 @@ EOF
 }
 
 ##############################################################################
-# Install Evochat
+# Install evochat
 # This includes setting up ruby, cloning repo and installing dependencies.
 # Globals:
 #   pg_pass
@@ -367,7 +367,7 @@ EOF
 }
 
 ##############################################################################
-# Setup Evochat systemd services and cwctl CLI
+# Setup evochat systemd services and cwctl CLI
 # Globals:
 #   None
 # Arguments:
@@ -407,7 +407,7 @@ function setup_ssl() {
     echo "debug: letsencrypt email: $le_email"
   fi
   curl https://ssl-config.mozilla.org/ffdhe4096.txt >> /etc/ssl/dhparam
-  wget https://gr8automacao.com.br/manutencao/nginx_evochat.conf
+  wget https://gr8automacao.com.br/manutenao/nginx_evochat.conf
   cp nginx_evochat.conf /etc/nginx/sites-available/nginx_evochat.conf
   certbot certonly --non-interactive --agree-tos --nginx -m "$le_email" -d "$domain_name"
   sed -i "s/evochat.domain.com/$domain_name/g" /etc/nginx/sites-available/nginx_evochat.conf
@@ -438,16 +438,17 @@ function ssl_success_message() {
     cat << EOF
 
 ***************************************************************************
-Evo! Evo!! Evochat server installation is complete.
+evo! evo!! evochat server installation is complete.
 The server will be accessible at https://$domain_name
 
+Join the community at https://evochat.com/community?utm_source=cwctl
 ***************************************************************************
 
 EOF
 }
 
 function cwctl_message() {
-  echo $'\U0001F680 Try out the all new Evochat CLI tool to manage your installation.'
+  echo $'\U0001F680 Try out the all new evochat CLI tool to manage your installation.'
   echo $'\U0001F680 Type "cwctl --help" to learn more.'
 }
 
@@ -461,9 +462,9 @@ function cwctl_message() {
 # Outputs:
 #   None
 ##############################################################################
-#function get_cw_version() {
-#  CW_VERSION=$(curl -s https://app.evochat.com/api | python3 -c 'import sys,json;data=json.loads(sys.stdin.read()); print(data["version"])')
-#}
+function get_cw_version() {
+  CW_VERSION=$(curl -s https://app.chatwoot.com/api | python3 -c 'import sys,json;data=json.loads(sys.stdin.read()); print(data["version"])')
+}
 
 ##############################################################################
 # This function handles the installation(-i/--install)
@@ -476,11 +477,11 @@ function cwctl_message() {
 #   None
 ##############################################################################
 function install() {
-#  get_cw_version
+  get_cw_version
   cat << EOF
 
 ***************************************************************************
-              Evochat Installation (v$CW_VERSION)
+              evochat Installation (v$CW_VERSION)
 ***************************************************************************
 
 For more verbose logs, open up a second terminal and follow along using,
@@ -489,7 +490,7 @@ For more verbose logs, open up a second terminal and follow along using,
 EOF
 
   sleep 3
-  read -rp 'Would you like to configure a domain and SSL for Evochat?(yes or no): ' configure_webserver
+  read -rp 'Would you like to configure a domain and SSL for evochat?(yes or no): ' configure_webserver
 
   if [ "$configure_webserver" == "yes" ]; then
     get_domain_info
@@ -525,7 +526,7 @@ EOF
     echo "➥ 5/9 Skipping database setup."
   fi
 
-  echo "➥ 6/9 Installing Evochat. This takes a long while."
+  echo "➥ 6/9 Installing evochat. This takes a long while."
   setup_evochat &>> "${LOG_FILE}"
 
   if [ "$install_pg_redis" != "no" ]; then
@@ -546,10 +547,13 @@ EOF
 ➥ 9/9 Skipping SSL/TLS setup.
 
 ***************************************************************************
-Evo! Evo!! Evochat server installation is complete.
+Woot! Woot!! evochat server installation is complete.
 The server will be accessible at http://$public_ip:3000
 
+To configure a domain and SSL certificate, follow the guide at
+https://www.evochat.com/docs/deployment/deploy-evochat-in-linux-vm?utm_source=cwctl
 
+Join the community at https://evochat.com/community?utm_source=cwctl
 ***************************************************************************
 
 EOF
@@ -607,7 +611,7 @@ function help() {
 
   cat <<EOF
 Usage: cwctl [OPTION]...
-Install and manage your Evochat installation.
+Install and manage your evochat installation.
 
 Example: cwctl -i master
 Example: cwctl -l web
@@ -616,16 +620,16 @@ Example: cwctl --upgrade
 Example: cwctl -c
 
 Installation/Upgrade:
-  -i, --install             Install the latest stable version of Evochat
-  -I                        Install Evochat from a git branch
-  -u, --upgrade             Upgrade Evochat to the latest stable version
+  -i, --install             Install the latest stable version of evochat
+  -I                        Install evochat from a git branch
+  -u, --upgrade             Upgrade evochat to the latest stable version
   -s, --ssl                 Fetch and install SSL certificates using LetsEncrypt
   -w, --webserver           Install and configure Nginx webserver with SSL
 
 Management:
   -c, --console             Open ruby console
-  -l, --logs                View logs from Evochat. Supported values include web/worker.
-  -r, --restart             Restart Evochat server
+  -l, --logs                View logs from evochat. Supported values include web/worker.
+  -r, --restart             Restart evochat server
 
 Miscellaneous:
   -d, --debug               Show debug messages
@@ -635,12 +639,14 @@ Miscellaneous:
 Exit status:
 Returns 0 if successful; non-zero otherwise.
 
+Report bugs at https://github.com/evochat/evochat/issues
+Get help, https://evochat.com/community?utm_source=cwctl
 
 EOF
 }
 
 ##############################################################################
-# Get Evochat web/worker logs (-l/--logs)
+# Get evochat web/worker logs (-l/--logs)
 # Globals:
 #   None
 # Arguments:
@@ -712,13 +718,13 @@ EOF
 #   None
 ##############################################################################
 function upgrade() {
-#  get_cw_version
-  echo "Upgrading Evochat to v$CW_VERSION"
+  get_cw_version
+  echo "Upgrading evochat to v$CW_VERSION"
   sleep 3
   upgrade_prereq
   sudo -i -u evochat << "EOF"
 
-  # Navigate to the Evochat directory
+  # Navigate to the evochat directory
   cd evochat
 
   # Pull the latest version of the master branch
@@ -758,7 +764,7 @@ EOF
 }
 
 ##############################################################################
-# Restart Evochat server (-r/--restart)
+# Restart evochat server (-r/--restart)
 # Globals:
 #   None
 # Arguments:
