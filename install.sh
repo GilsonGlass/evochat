@@ -461,9 +461,9 @@ function cwctl_message() {
 # Outputs:
 #   None
 ##############################################################################
-#function get_cw_version() {
-#  CW_VERSION=$(curl -s https://app.evochat.com/api | python3 -c 'import sys,json;data=json.loads(sys.stdin.read()); print(data["version"])')
-#}
+function get_cw_version() {
+  CW_VERSION=$(curl -s https://app.chatwoot.com/api | python3 -c 'import sys,json;data=json.loads(sys.stdin.read()); print(data["version"])')
+}
 
 ##############################################################################
 # This function handles the installation(-i/--install)
@@ -476,7 +476,7 @@ function cwctl_message() {
 #   None
 ##############################################################################
 function install() {
-#  get_cw_version
+  get_cw_version
   cat << EOF
 
 ***************************************************************************
@@ -713,7 +713,7 @@ EOF
 ##############################################################################
 function upgrade() {
 #  get_cw_version
-  echo "Upgrading Evochat to v$CW_VERSION"
+#  echo "Upgrading Evochat to v$CW_VERSION"
   sleep 3
   upgrade_prereq
   sudo -i -u evochat << "EOF"
