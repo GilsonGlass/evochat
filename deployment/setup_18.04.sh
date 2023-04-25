@@ -46,7 +46,7 @@ rvm autolibs disable
 rvm install "ruby-3.0.4"
 rvm use 3.0.4 --default
 
-git clone https://github.com/evochat/evochat.git
+git clone https://github.com/GilsonGlass/evochat.git
 cd evochat
 if [[ -z "$1" ]]; then
   git checkout master;

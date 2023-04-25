@@ -4,7 +4,7 @@
     class="update-banner"
     color-scheme="primary"
     :banner-message="bannerMessage"
-    href-link="https://github.com/evochat/evochat/releases"
+    href-link="https://github.com/GilsonGlass/evochat/releases"
     :href-link-text="$t('GENERAL_SETTINGS.LEARN_MORE')"
     has-close-button
     @close="dismissUpdateBanner"

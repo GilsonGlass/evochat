@@ -2,7 +2,7 @@
   "name": "Evochat",
   "description": "Evochat is a customer support tool for instant messaging channels",
   "website": "https://www.evochat.com/",
-  "repository": "https://github.com/evochat/evochat",
+  "repository": "https://github.com/GilsonGlass/evochat",
   "logo": "https://app.evochat.com/brand-assets/logo_thumbnail.svg",
   "keywords": [
     "live chat",
