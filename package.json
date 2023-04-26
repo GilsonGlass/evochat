@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@braid/vue-formulate": "^2.5.2",
-    "@evochat/prosemirror-schema": "https://github.com/GilsonGlass/prosemirror-schema.git",
+    "@evochat/prosemirror-schema": "https://github.com/chatwoot/prosemirror-schema.git",
     "@evochat/utils": "^0.0.12",
     "@hcaptcha/vue-hcaptcha": "^0.3.2",
     "@june-so/analytics-next": "^1.36.5",

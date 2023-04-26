@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/GilsonGlass/devise-secure_password
+  remote: https://github.com/chatwoot/devise-secure_password
   revision: d777b04f12652d576b1272b8f39857e3e0b3fc26
   specs:
     devise-secure_password (2.0.1)

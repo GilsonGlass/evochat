@@ -27,7 +27,7 @@ if ENV.fetch('SENTRY_DSN', false).present?
   require 'sentry-sidekiq'
 end
 
-module evochat
+module Evochat
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
